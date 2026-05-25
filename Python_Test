@@ -1,0 +1,12 @@
+def username_generator(first_name, last_name):
+  if len(first_name) < 3:
+    user_name = first_name
+    if len(last_name) < 4:
+      user_name =+ last_name
+    else:
+      user_name = first_name[0:2] + last_name[0:3]
+  return user_name
+  print(user_name)
+
+
+username_generator("Abe", "Simpson")

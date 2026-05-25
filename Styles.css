@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Megrim';
+  src: url('fonts/Megrim/Megrim-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Monoton';
+  src: url('fonts/Monoton/Monoton-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'ZenTokyoZoo';
+  src: url('fonts/Zen_Tokyo_Zoo/ZenTokyoZoo-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Pompiere';
+  src: url('fonts/Pompiere/Pompiere-Regular.ttf');
+}
+
+body {
+  background-color: #060815;
+  color: white;
+  font-family: "Pompiere", sans-serif;
+}
+
+header {
+  background-color: #060815;
+  margin-bottom: 0!important;
+  padding-bottom: 0!important;
+}
+
+main {
+  background-color: #060815;
+}
+
+H1 {
+  background-color: #060815;
+  color: rgb(248, 0, 0)!important;
+  font-family: "Monoton", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: 100px!important;
+  text-transform: uppercase;
+  margin-bottom: 0!important;
+  text-shadow:
+    0 0 3ch currentColor,
+    0 0 8px currentColor,
+    0 0 1px currentColor;
+}
+
+h2 {
+  background-color: #060815;
+  color: white;
+  font-family: "Pompiere", sans-serif;
+}
+
+h3 {
+  background-color: #060815;
+  color: white;
+  font-family: "Pompiere", sans-serif;
+}
+
+.titre-section {
+  font-family: "ZenTokyoZoo", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow:
+    0 0 3ch currentColor,
+    0 0 8px currentColor,
+    0 0 1px currentColor;
+}
+
+#meilleur-film img {
+  width: 100%;
+  max-width: 300px;
+}
+
+.carte-film img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.carte-film h3 {
+  color: white !important;
+  font-size: 14px;
+}
+#meilleur-film h3 {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  H1 {
+    font-size: 40px;
+  }
+}
