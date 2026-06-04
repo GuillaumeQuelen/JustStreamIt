@@ -5,83 +5,119 @@
 }
 
 @font-face {
-  font-family: 'Megrim';
-  src: url('fonts/Megrim/Megrim-Regular.ttf');
+  font-family: 'Oswald';
+  src: url('fonts/Oswald/Oswald-ExtraLight.ttf');
+  font-weight: 200;
 }
-
 @font-face {
-  font-family: 'Monoton';
-  src: url('fonts/Monoton/Monoton-Regular.ttf');
+  font-family: 'Oswald';
+  src: url('fonts/Oswald/Oswald-Light.ttf');
+  font-weight: 300;
 }
-
 @font-face {
-  font-family: 'ZenTokyoZoo';
-  src: url('fonts/Zen_Tokyo_Zoo/ZenTokyoZoo-Regular.ttf');
+  font-family: 'Oswald';
+  src: url('fonts/Oswald/Oswald-Regular.ttf');
+  font-weight: 400;
 }
-
 @font-face {
-  font-family: 'Pompiere';
-  src: url('fonts/Pompiere/Pompiere-Regular.ttf');
+  font-family: 'Oswald';
+  src: url('fonts/Oswald/Oswald-SemiBold.ttf');
+  font-weight: 600;
 }
 
 body {
-  background-color: #060815;
-  color: white;
-  font-family: "Pompiere", sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Oswald', sans-serif;
 }
 
 header {
-  background-color: #060815;
-  margin-bottom: 0!important;
-  padding-bottom: 0!important;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
 }
 
+#logo {
+  width: 100%;
+  max-width: 1054px;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 15px;
+  }
+  main {
+    padding: 0 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  header {
+    padding: 20px;
+  }
+  main {
+    padding: 0 20px;
+  }
+}
+
+/* SECTIONS */
 main {
-  background-color: #060815;
+  max-width: 1054px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-H1 {
-  background-color: #060815;
-  color: rgb(248, 0, 0)!important;
-  font-family: "Monoton", sans-serif;
-  font-weight: bold;
-  text-align: center;
-  letter-spacing: 4px;
-  font-size: 100px!important;
-  text-transform: uppercase;
-  margin-bottom: 0!important;
-  text-shadow:
-    0 0 3ch currentColor,
-    0 0 8px currentColor,
-    0 0 1px currentColor;
-}
-
-h2 {
-  background-color: #060815;
-  color: white;
-  font-family: "Pompiere", sans-serif;
-}
-
-h3 {
-  background-color: #060815;
-  color: white;
-  font-family: "Pompiere", sans-serif;
+section {
+  margin-bottom: 30px;
 }
 
 .titre-section {
-  font-family: "ZenTokyoZoo", sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  text-shadow:
-    0 0 3ch currentColor,
-    0 0 8px currentColor,
-    0 0 1px currentColor;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  margin-bottom: 15px;
 }
 
-#meilleur-film img {
-  width: 100%;
-  max-width: 300px;
+/* MEILLEUR FILM */
+.meilleur-film-contenu {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border: 6px solid #000;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.meilleur-film-contenu img {
+  width: 220px;
+  height: auto;
+  object-fit: cover;
+}
+
+.meilleur-film-infos {
+  flex: 1;
+}
+
+.meilleur-film-infos h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.meilleur-film-infos p {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* CARTES FILMS */
+.carte-film {
+  position: relative;
+  padding: 5px;
 }
 
 .carte-film img {
@@ -91,15 +127,53 @@ h3 {
 }
 
 .carte-film h3 {
-  color: white !important;
   font-size: 14px;
-}
-#meilleur-film h3 {
-  color: white;
+  color: #fff;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  background: rgba(0,0,0,0.5);
+  padding: 5px;
 }
 
-@media (max-width: 768px) {
-  H1 {
-    font-size: 40px;
+/* BOUTONS ORANGE */
+#btn-details-meilleur,
+.btn-voir-plus {
+  background-color: #fa7000;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+}
+
+.btn-voir-plus {
+  display: block;
+  margin: 15px auto;
+}
+
+/* SELECT */
+#choix-genre {
+  font-family: 'Oswald', sans-serif;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+}
+
+/* MODALE */
+.btn-fermer {
+  background-color: #fa7000;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 30px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 767px) {
+  .meilleur-film-contenu {
+    flex-direction: column;
   }
 }

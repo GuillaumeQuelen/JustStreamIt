@@ -2,77 +2,66 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <link href="Styles.css" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="Styles.css" rel="stylesheet" type="text/css">
   <link href="bootstrap/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
-  <title>Petit ciné</title>
+  <title>JustStreamIt</title>
 </head>
 <body>
-
   <header>
-    <h1>Petit ciné</h1>
+    <img id="logo" src="images/logo_Dekstop.png" alt="JustStreamIt - Vidéos à la demande">
   </header>
 
   <main>
     <section id="meilleur-film">
       <h2 class="titre-section">Meilleur film</h2>
-      <img src="..." alt="Titre du film">
-      <h3>Titre du film</h3>
-      <button id="btn-details-meilleur">Détails</button>
+      <div class="meilleur-film-contenu">
+        <img src="..." alt="Titre du film">
+        <div class="meilleur-film-infos">
+          <h3>Titre du film</h3>
+          <p id="meilleur-resume">Résumé du film...</p>
+          <button id="btn-details-meilleur">Détails</button>
+        </div>
+      </div>
     </section>
 
     <section id="meilleurs-films">
-      <h2 class="titre-section">Meilleurs films</h2>
+      <h2 class="titre-section">Films les mieux notés</h2>
       <div class="row"></div>
     </section>
 
-    <section id="drame">
-      <h2 class="titre-section">Drame</h2>
+    <section id="sci-fi">
+      <h2 class="titre-section">Sci-Fi</h2>
       <div class="row"></div>
     </section>
 
-    <section id="animation">
-      <h2 class="titre-section">Animation</h2>
-      <div class="row"></div>
-    </section>
-
-    <section id="comedie">
-      <h2 class="titre-section">Comédie</h2>
-      <div class="row"></div>
-    </section>
-
-    <section id="horreur">
-      <h2 class="titre-section">Horreur</h2>
+    <section id="film-noir">
+      <h2 class="titre-section">Film-Noir</h2>
       <div class="row"></div>
     </section>
 
     <section id="policier">
-      <h2 class="titre-section">Policier</h2>
+      <h2 class="titre-section">Crime</h2>
       <div class="row"></div>
     </section>
 
-    <section id="action">
-        <h2 class="titre-section">Action</h2>
-    <div class="row"></div>
-</section>
     <section id="autres">
-        <h2 class="titre-section">Autres</h2>
-        <select id="choix-genre">
-            <option value="">-- Choisir un genre --</option>
-        </select>
-        <div class="row"></div>
+      <h2 class="titre-section">Autres</h2>
+      <select id="choix-genre">
+        <option value="">-- Choisir un genre --</option>
+      </select>
+      <div class="row"></div>
     </section>
   </main>
 
   <footer></footer>
 
-  <!-- Modale -->
   <div class="modal fade" id="modalFilm" tabindex="-1">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content bg-dark text-white">
+      <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal-titre"></h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body d-flex flex-column flex-md-row gap-3">
           <img id="modal-img" src="" alt="" style="width:200px; height:300px; object-fit:cover;">
@@ -90,7 +79,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn-fermer" data-bs-dismiss="modal">Fermer</button>
         </div>
       </div>
     </div>

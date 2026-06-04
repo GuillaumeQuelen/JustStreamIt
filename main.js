@@ -1,27 +1,22 @@
-const couleursGenres = {
-  "Action": "#e8e8e8", "Adult": "#ff4d8d", "Adventure": "#ffd700",
-  "Animation": "#00e5cc", "Biography": "#a0a0a0", "Comedy": "#ff8c00",
-  "Crime": "#4169e1", "Documentary": "#c8c8c8", "Drama": "#9b30ff",
-  "Family": "#ffec4f", "Fantasy": "#00c957", "Film-Noir": "#888888",
-  "History": "#808080", "Horror": "#ff0000", "Music": "#bf5fff",
-  "Musical": "#ffe44d", "Mystery": "#9e9e9e", "News": "#f0f0f0",
-  "Reality-TV": "#ffc200", "Romance": "#ff69b4", "Sci-Fi": "#00ff88",
-  "Sport": "#ff3333", "Thriller": "#1e90ff", "War": "#cc0000",
-  "Western": "#daa520", "Best": "#e9be53", "Bests": "#e9be53", "Others": "#fbff84",
-};
-
 const sections = {
-  "meilleur-film": "Best", "meilleurs-films": "Bests",
-  "action": "Action", "animation": "Animation", "comedie": "Comedy",
-  "policier": "Crime", "drame": "Drama", "horreur": "Horror","autres":"Others"
+  "sci-fi": "Sci-Fi",
+  "film-noir": "Film-Noir",
+  "policier": "Crime",
 };
 
-for (const [sectionId, genre] of Object.entries(sections)) {
-  const element = document.querySelector(`#${sectionId} h2`);
-  if (element && genre) {
-    element.style.color = couleursGenres[genre];
+function choisirLogo() {
+  const logo = document.getElementById("logo");
+  const largeur = window.innerWidth;
+  if (largeur < 768) {
+    logo.src = "images/logo_Mobile.png";
+  } else if (largeur < 1024) {
+    logo.src = "images/logo_Tablet.png";
+  } else {
+    logo.src = "images/logo_Dekstop.png";
   }
 }
+choisirLogo();
+window.addEventListener("resize", choisirLogo);
 
 function ouvrirModal(filmId) {
   fetch(`http://127.0.0.1:8000/api/v1/titles/${filmId}`)
@@ -50,10 +45,18 @@ function ouvrirModal(filmId) {
 function afficherFilms(films, sectionId) {
   const row = document.querySelector(`#${sectionId} .row`);
   row.innerHTML = "";
-  films.forEach(film => {
+
+  films.forEach((film, index) => {
     const col = document.createElement("div");
     col.className = "col-6 col-md-3 col-lg-2 carte-film";
     col.style.cursor = "pointer";
+
+    if (index >= 2) {
+      col.classList.add("d-none", "d-md-flex", "d-lg-flex", "carte-film-cache");
+    }
+    if (index >= 4) {
+      col.classList.add("d-none", "d-md-none", "d-lg-flex", "carte-film-cache");
+    }
 
     const img = document.createElement("img");
     img.src = film.image_url;
@@ -70,12 +73,29 @@ function afficherFilms(films, sectionId) {
 
     col.addEventListener("click", () => ouvrirModal(film.id));
   });
+
+  const btnVoirPlus = document.createElement("button");
+  btnVoirPlus.textContent = "Voir plus";
+  btnVoirPlus.className = "btn-voir-plus d-lg-none";
+  btnVoirPlus.addEventListener("click", () => {
+    const caches = row.querySelectorAll(".carte-film-cache");
+    if (btnVoirPlus.textContent === "Voir plus") {
+      caches.forEach(el => el.classList.remove("d-none"));
+      btnVoirPlus.textContent = "Voir moins";
+    } else {
+      caches.forEach(el => el.classList.add("d-none"));
+      btnVoirPlus.textContent = "Voir plus";
+    }
+  });
+  row.parentElement.appendChild(btnVoirPlus);
 }
 
 function afficherGenre(genre, sectionId) {
   fetch(`http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score&genre=${genre}&page_size=6`)
     .then(response => response.json())
-    .then(data => { afficherFilms(data.results, sectionId); });
+    .then(data => {
+      afficherFilms(data.results, sectionId);
+    });
 }
 
 fetch("http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score&page_size=7")
@@ -88,6 +108,13 @@ fetch("http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score&page_size=7")
     img.alt = meilleurFilm.title;
     document.querySelector("#meilleur-film h3").textContent = meilleurFilm.title;
     afficherFilms(data.results.slice(1, 7), "meilleurs-films");
+
+    // Charger le résumé du meilleur film
+    fetch(`http://127.0.0.1:8000/api/v1/titles/${meilleurFilm.id}`)
+      .then(r => r.json())
+      .then(detail => {
+        document.getElementById("meilleur-resume").textContent = detail.long_description;
+      });
 
     const ouvrirMeilleur = () => ouvrirModal(meilleurFilm.id);
     document.getElementById("btn-details-meilleur").addEventListener("click", ouvrirMeilleur);
@@ -114,9 +141,6 @@ fetch("http://127.0.0.1:8000/api/v1/genres/?page_size=100")
     });
   });
 
-afficherGenre("Horror", "horreur");
-afficherGenre("Comedy", "comedie");
-afficherGenre("Action", "action");
-afficherGenre("Animation", "animation");
-afficherGenre("Drama", "drame");
+afficherGenre("Sci-Fi", "sci-fi");
+afficherGenre("Film-Noir", "film-noir");
 afficherGenre("Crime", "policier");
