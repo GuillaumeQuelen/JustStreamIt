@@ -48,10 +48,10 @@ function afficherFilms(films, sectionId) {
 
   films.forEach((film, index) => {
     const col = document.createElement("div");
-    col.className = "col-6 col-md-3 col-lg-2 carte-film";
+    col.className = "ccol-12 col-md-6 col-lg-4 carte-film";
     col.style.cursor = "pointer";
 
-    if (index >= 2) {
+    if (index >= 1) {
       col.classList.add("d-none", "d-md-flex", "d-lg-flex", "carte-film-cache");
     }
     if (index >= 4) {
