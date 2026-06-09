@@ -51,7 +51,7 @@ function afficherFilms(films, sectionId) {
     col.className = "ccol-12 col-md-6 col-lg-4 carte-film";
     col.style.cursor = "pointer";
 
-    if (index >= 1) {
+    if (index >= 2) {
       col.classList.add("d-none", "d-md-flex", "d-lg-flex", "carte-film-cache");
     }
     if (index >= 4) {
